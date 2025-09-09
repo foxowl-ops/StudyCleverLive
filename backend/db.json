@@ -1,0 +1,57 @@
+{
+  "domains": [
+    {
+      "id": "ai",
+      "name": "Artificial Intelligence",
+      "description": "Master AI, machine learning, and the future of technology",
+      "icon": "Brain",
+      "color": "from-purple-500 to-blue-600"
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "description": "Build wealth with smart financial strategies and investments",
+      "icon": "TrendingUp",
+      "color": "from-green-500 to-emerald-600"
+    },
+    {
+      "id": "product-management",
+      "name": "Product Management",
+      "description": "Create products that users love and businesses need",
+      "icon": "Target",
+      "color": "from-orange-500 to-red-600"
+    },
+    {
+      "name": "Geography",
+      "description": "na",
+      "icon": "Earth",
+      "color": "from-green-500 to-emerald-600",
+      "id": "e933ca9d-765c-4759-bf61-cb3ac0a5638b"
+    },
+    {
+      "name": "History",
+      "description": "na",
+      "icon": "Map",
+      "color": "from-indigo-500 to-violet-500",
+      "id": "54c91e70-500d-4b9c-a77e-f3c57a2d9310"
+    }
+  ],
+  "content": [
+    {
+      "id": "content_1",
+      "domain_id": "ai",
+      "type": "article",
+      "title": "Introduction to Neural Networks",
+      "url": "https://example.com/article1",
+      "description": "A beginner-friendly guide."
+    },
+    {
+      "id": "content_2",
+      "domain_id": "ai",
+      "type": "video",
+      "title": "How to Build a Chatbot",
+      "url": "https://youtube.com/watch?v=xyz",
+      "description": "A step-by-step tutorial."
+    }
+  ]
+}
