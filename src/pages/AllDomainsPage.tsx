@@ -2,23 +2,17 @@ import { Link } from "react-router-dom";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { fetchApi } from "@/lib/api";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Terminal } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal } from "lucide-react";
 import DynamicIcon from "@/components/ui/dynamic-icon";
 
-const fetchDomains = async () => {
-  const response = await fetch("http://127.0.0.1:8000/api/domains");
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return response.json();
-};
-
 // Helper function to determine text color based on background
-const getTextColorForBackground = (hexColor) => {
-  if (!hexColor || !hexColor.startsWith('#')) return 'text-white'; // Default for gradients or invalid format
-  const rgb = parseInt(hexColor.slice(1), 16);
+const getTextColorForBackground = (colorString) => {
+  if (!colorString) return 'text-white';
+  if (colorString.startsWith('from-')) return 'text-white'; // Default for gradients
+  if (!colorString.startsWith('#')) return 'text-white'; // Default for invalid format
+
+  const rgb = parseInt(colorString.slice(1), 16);
   const r = (rgb >> 16) & 0xff;
   const g = (rgb >> 8) & 0xff;
   const b = (rgb >> 0) & 0xff;
@@ -29,7 +23,7 @@ const getTextColorForBackground = (hexColor) => {
 const AllDomainsPage = () => {
   const { data: domains, isLoading, isError, error } = useQuery({
     queryKey: ["domains"],
-    queryFn: fetchDomains,
+    queryFn: () => fetchApi("/api/domains"),
   });
 
   if (isLoading) {
@@ -83,7 +77,7 @@ const AllDomainsPage = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {domains.map((domain) => {
+                {domains?.map((domain) => {
                     const isGradient = domain.color.startsWith('from-');
                     const textColorClass = isGradient ? 'text-white' : getTextColorForBackground(domain.color);
                     return (
