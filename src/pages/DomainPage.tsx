@@ -116,16 +116,18 @@ const DomainPage = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {news.map((newsItem) => (
-                <Card key={newsItem.id} className="hover:shadow-medium transition-shadow cursor-pointer">
-                  <CardHeader>
-                    <h3 className="font-semibold text-lg leading-tight">{newsItem.title}</h3>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex justify-between items-center text-sm text-muted-foreground">
-                      <span>{newsItem.description}</span>
-                    </div>
-                  </CardContent>
-                </Card>
+                <a key={newsItem.id} href={newsItem.url} target="_blank" rel="noopener noreferrer">
+                  <Card className="hover:shadow-medium transition-shadow cursor-pointer h-full">
+                    <CardHeader>
+                      <h3 className="font-semibold text-lg leading-tight">{newsItem.title}</h3>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex justify-between items-center text-sm text-muted-foreground">
+                        <span>{newsItem.description}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
               ))}
             </div>
           </section>
