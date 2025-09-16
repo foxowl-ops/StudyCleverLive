@@ -5,13 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Play, Newspaper, ArrowLeft } from "lucide-react";
 
-const fetchDomainContent = async (domain: string) => {
-  const res = await fetch(`/api/domains/${domain}/content`);
-  if (!res.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return res.json();
-};
+const fetchContent = () => fetchApi(`/api/domains/${domain}/content`);
 
 const fetchDomainDetails = async (domain: string) => {
   const res = await fetch(`/api/domains/${domain}`);
@@ -147,4 +141,4 @@ const DomainPage = () => {
   );
 };
 
-export default DomainPage;
+export default DomainPage;nPage;

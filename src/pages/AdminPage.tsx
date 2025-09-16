@@ -24,17 +24,7 @@ const gradients = [
 
 const getRandomGradient = () => gradients[Math.floor(Math.random() * gradients.length)];
 
-// API fetcher
-const fetchApi = async (url, options = {}) => {
-  const res = await fetch(url, options);
-  if (!res.ok) {
-    const error = new Error('An error occurred while fetching the data.');
-    error.info = await res.json();
-    error.status = res.status;
-    throw error;
-  }
-  return res.json();
-};
+import { fetchApi } from "@/lib/api";
 
 // Types
 type Domain = { id: string; name: string; description: string; icon: string; color: string };

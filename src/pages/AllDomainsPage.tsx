@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
+import { fetchApi } from "@/lib/api";
 import { ArrowRight } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
