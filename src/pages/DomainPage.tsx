@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Play, Newspaper, ArrowLeft } from "lucide-react";
 import { fetchApi } from "@/lib/api";
+import { Helmet } from "react-helmet-async";
 
 const DomainPage = () => {
   const { domain } = useParams<{ domain: string }>();
@@ -22,12 +23,22 @@ const DomainPage = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+        <div>
+            <Helmet>
+                <title>Loading Domain... - StudyClever</title>
+            </Helmet>
+            Loading...
+        </div>
+    );
   }
 
   if (isError || !content || !domainDetails) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
+        <Helmet>
+            <title>Domain Not Found - StudyClever</title>
+        </Helmet>
         <div className="text-center">
           <h1 className="text-3xl font-heading font-bold mb-4">Domain Not Found</h1>
           <Link to="/">
@@ -44,6 +55,11 @@ const DomainPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{`Learn ${domainDetails.name} - StudyClever`}</title>
+        <meta name="description" content={`${domainDetails.description}. Explore articles, videos, and news about ${domainDetails.name} on StudyClever.`} />
+      </Helmet>
+
       {/* Header */}
       <header className="bg-gradient-primary text-white py-16">
         <div className="container mx-auto px-6">

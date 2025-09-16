@@ -5,6 +5,7 @@ import { fetchApi } from "@/lib/api";
 import { ArrowRight, Terminal } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import DynamicIcon from "@/components/ui/dynamic-icon";
+import { Helmet } from "react-helmet-async";
 
 // Helper function to determine text color based on background
 const getTextColorForBackground = (colorString) => {
@@ -29,6 +30,9 @@ const AllDomainsPage = () => {
   if (isLoading) {
     return (
       <div className="container mx-auto px-6 py-10">
+        <Helmet>
+            <title>Loading Domains - StudyClever</title>
+        </Helmet>
         <h1 className="text-4xl font-bold mb-8">All Domains</h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[...Array(3)].map((_, i) => (
@@ -51,6 +55,9 @@ const AllDomainsPage = () => {
   if (isError) {
     return (
         <div className="container mx-auto px-6 py-10">
+            <Helmet>
+                <title>Error - StudyClever</title>
+            </Helmet>
             <Alert variant="destructive">
                 <Terminal className="h-4 w-4" />
                 <AlertTitle>Error Fetching Domains</AlertTitle>
@@ -65,6 +72,10 @@ const AllDomainsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-secondary">
+        <Helmet>
+            <title>All Learning Domains - StudyClever</title>
+            <meta name="description" content="Explore all learning domains available on StudyClever. Choose your path and start learning AI, Finance, Product Management, and more." />
+        </Helmet>
         <div className="container mx-auto px-6 py-10">
             <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">

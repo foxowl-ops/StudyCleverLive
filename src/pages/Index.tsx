@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Play, Newspaper, ArrowRight, Star, Users, Trophy, Zap } from "lucide-react";
 import DynamicIcon from "@/components/ui/dynamic-icon";
+import { Helmet } from "react-helmet-async";
 
 // Helper function to determine text color based on background
 const getTextColorForBackground = (hexColor) => {
@@ -76,6 +77,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>StudyClever: Learn AI, Finance, and Product Management</title>
+        <meta name="description" content="Master in-demand skills with StudyClever. Our platform offers expert-curated content, engaging videos, and the latest insights in Artificial Intelligence, Finance, and Product Management." />
+      </Helmet>
+
       {/* Navigation */}
       <nav className="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
