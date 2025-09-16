@@ -41,6 +41,13 @@ class Content(BaseModel):
     url: str
     description: str
 
+class ContentCreate(BaseModel):
+    domain_id: str
+    type: Literal["article", "video", "news"]
+    title: str
+    url: str
+    description: str
+
 # Helper function to read data from db.json
 def read_db():
     with open("db.json", "r") as f:
@@ -113,7 +120,7 @@ async def delete_domain(domain_id: str):
 
 # Content Management
 @app.post("/api/admin/content", response_model=Content)
-async def create_content(content: Content):
+async def create_content(content: ContentCreate):
     db = read_db()
     new_content = content.dict()
     new_content["id"] = str(uuid.uuid4())
