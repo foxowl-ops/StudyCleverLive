@@ -132,4 +132,4 @@ const DomainPage = () => {
   );
 };
 
-export default DomainPage;nPage;
+export default DomainPage;
