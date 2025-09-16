@@ -4,29 +4,20 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Play, Newspaper, ArrowLeft } from "lucide-react";
-
-const fetchContent = () => fetchApi(`/api/domains/${domain}/content`);
-
-const fetchDomainDetails = async (domain: string) => {
-  const res = await fetch(`/api/domains/${domain}`);
-  if (!res.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return res.json();
-};
+import { fetchApi } from "@/lib/api";
 
 const DomainPage = () => {
   const { domain } = useParams<{ domain: string }>();
 
   const { data: content, isLoading, isError } = useQuery({
     queryKey: ["content", domain],
-    queryFn: () => fetchDomainContent(domain!),
+    queryFn: () => fetchApi(`/api/domains/${domain}/content`),
     enabled: !!domain,
   });
 
   const { data: domainDetails } = useQuery({
     queryKey: ["domain", domain],
-    queryFn: () => fetchDomainDetails(domain!),
+    queryFn: () => fetchApi(`/api/domains/${domain}`),
     enabled: !!domain,
   });
 
